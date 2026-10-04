@@ -6,38 +6,63 @@ export interface UserInfo {
   avatarUrl: string
   openid?: string
   role?: string
+  isVip?: boolean
+  vipExpireDate?: string
 }
 
 export const useUserStore = defineStore('user', () => {
-  // 从本地同步缓存读取初始 token
+  // 从本地同步缓存读取初始双 Token
   const token = ref<string>(uni.getStorageSync('access_token') || '')
+  const refreshToken = ref<string>(uni.getStorageSync('refresh_token') || '')
   
   const userInfo = ref<UserInfo>(
     uni.getStorageSync('user_info') 
       ? JSON.parse(uni.getStorageSync('user_info'))
       : {
           nickName: '游客',
-          avatarUrl: 'https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg'
+          avatarUrl: 'https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg',
+          isVip: false,
+          vipExpireDate: ''
         }
   )
 
   const isLogin = ref<boolean>(!!token.value)
 
   /**
-   * 设置登录态
+   * 设置双 Token 凭据
    */
-  const setToken = (newToken: string) => {
-    token.value = newToken
-    isLogin.value = !!newToken
-    uni.setStorageSync('access_token', newToken)
+  const setTokens = (newAccess: string, newRefresh?: string) => {
+    token.value = newAccess
+    isLogin.value = !!newAccess
+    uni.setStorageSync('access_token', newAccess)
+    if (newRefresh) {
+      refreshToken.value = newRefresh
+      uni.setStorageSync('refresh_token', newRefresh)
+    }
+  }
+
+  /**
+   * 兼容单个 setToken
+   */
+  const setToken = (newAccess: string) => {
+    setTokens(newAccess)
   }
 
   /**
    * 更新用户信息
    */
-  const setUserInfo = (info: UserInfo) => {
-    userInfo.value = info
-    uni.setStorageSync('user_info', JSON.stringify(info))
+  const setUserInfo = (info: Partial<UserInfo>) => {
+    userInfo.value = { ...userInfo.value, ...info }
+    uni.setStorageSync('user_info', JSON.stringify(userInfo.value))
+  }
+
+  /**
+   * 更新 VIP 会员权益
+   */
+  const setVipStatus = (isVip: boolean, expireDate: string) => {
+    userInfo.value.isVip = isVip
+    userInfo.value.vipExpireDate = expireDate
+    uni.setStorageSync('user_info', JSON.stringify(userInfo.value))
   }
 
   /**
@@ -45,12 +70,16 @@ export const useUserStore = defineStore('user', () => {
    */
   const logout = () => {
     token.value = ''
+    refreshToken.value = ''
     isLogin.value = false
     userInfo.value = {
       nickName: '游客',
-      avatarUrl: 'https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg'
+      avatarUrl: 'https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg',
+      isVip: false,
+      vipExpireDate: ''
     }
     uni.removeStorageSync('access_token')
+    uni.removeStorageSync('refresh_token')
     uni.removeStorageSync('user_info')
     uni.showToast({
       title: '已退出登录',
@@ -60,10 +89,13 @@ export const useUserStore = defineStore('user', () => {
 
   return {
     token,
+    refreshToken,
     userInfo,
     isLogin,
+    setTokens,
     setToken,
     setUserInfo,
+    setVipStatus,
     logout
   }
 })

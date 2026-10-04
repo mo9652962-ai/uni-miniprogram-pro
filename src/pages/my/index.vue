@@ -42,6 +42,20 @@
         </view>
       </view>
 
+      <!-- 阶段 3 商业实战：微信支付收银台入口 -->
+      <view class="menu-item" @click="goVipPay">
+        <view class="menu-left">
+          <wd-icon name="star-filled" size="20px" color="#ffd700" />
+          <text class="menu-title">会员中心 / 微信支付</text>
+        </view>
+        <view class="menu-right">
+          <text class="menu-value" style="color: #f5222d; font-weight: bold;">
+            {{ userStore.userInfo.isVip ? '已激活' : '立减特惠' }}
+          </text>
+          <wd-icon name="chevron-right" size="16px" color="#c8c9cc" />
+        </view>
+      </view>
+
       <view class="menu-item" @click="goCalculator">
         <view class="menu-left">
           <wd-icon name="chart" size="20px" color="#ff9500" />
@@ -117,6 +131,10 @@ onShow(() => {
 
 const goHistory = () => {
   uni.navigateTo({ url: '/subpackages/quiz/history/index' })
+}
+
+const goVipPay = () => {
+  uni.navigateTo({ url: '/subpackages/order/pay/index' })
 }
 
 const goCalculator = () => {
