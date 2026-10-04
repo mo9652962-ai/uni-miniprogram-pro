@@ -58,6 +58,11 @@
           <text class="quick-title">全量练 16 题</text>
           <text class="quick-sub">完整过一轮</text>
         </view>
+        <view class="quick-item" @click="goSearch">
+          <wd-icon name="search" size="28px" color="#34c759" />
+          <text class="quick-title">题库分类检索</text>
+          <text class="quick-sub">搜考点·看全析</text>
+        </view>
         <view class="quick-item" @click="goWrongBook">
           <wd-icon name="error-circle-filled" size="28px" color="#ef4444" />
           <text class="quick-title">错题专练本</text>
@@ -108,10 +113,27 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { onShow, onPullDownRefresh } from '@dcloudio/uni-app'
+import { onShow, onPullDownRefresh, onShareAppMessage, onShareTimeline } from '@dcloudio/uni-app'
 import { useCheckinStore } from '@/store/checkin'
 import type { PracticeRecord } from '@/store/checkin'
 import { apiGetUserStats } from '@/services/quizApi'
+
+// ----------------------------------------------------------------
+// 微信小程序原生社交分享卡片配置 (onShareAppMessage + onShareTimeline)
+// ----------------------------------------------------------------
+onShareAppMessage(() => {
+  return {
+    title: `我已在「刷题打卡」连续打卡 ${checkinStore.streakDays} 天，一起来挑战嵌入式与电路真题！`,
+    path: '/pages/index/index'
+  }
+})
+
+onShareTimeline(() => {
+  return {
+    title: `今日刷题打卡 · 嵌入式/电路高频题库，累计答题 ${checkinStore.totalAnswered} 道！`,
+    query: ''
+  }
+})
 
 const checkinStore = useCheckinStore()
 
@@ -161,6 +183,10 @@ const startQuick = (count: number) => {
 
 const goSetup = () => {
   uni.navigateTo({ url: '/subpackages/quiz/setup/index' })
+}
+
+const goSearch = () => {
+  uni.navigateTo({ url: '/subpackages/quiz/search/index' })
 }
 
 const goWrongBook = () => {

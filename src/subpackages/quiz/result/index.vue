@@ -76,6 +76,7 @@
     <!-- 底部操作 -->
     <view class="footer">
       <wd-button plain @click="goHome">返回首页</wd-button>
+      <wd-button open-type="share">分享战报</wd-button>
       <wd-button block type="primary" @click="retry">再练一次</wd-button>
     </view>
   </view>
@@ -83,7 +84,24 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import { onLoad } from '@dcloudio/uni-app'
+import { onLoad, onShareAppMessage, onShareTimeline } from '@dcloudio/uni-app'
+
+// ----------------------------------------------------------------
+// 微信小程序原生社交分享卡片配置 (练习报告战绩炫耀)
+// ----------------------------------------------------------------
+onShareAppMessage(() => {
+  return {
+    title: `我在「刷题打卡」斩获 ${accuracy.value}% 正确率（答对 ${correct.value}/${total.value}），邀你来战！`,
+    path: '/pages/index/index'
+  }
+})
+
+onShareTimeline(() => {
+  return {
+    title: `【刷题战报】正确率 ${accuracy.value}% · 嵌入式电路练习完成！`,
+    query: ''
+  }
+})
 
 interface DetailQuestion {
   id: string

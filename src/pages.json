@@ -55,6 +55,12 @@
           "style": {
             "navigationBarTitleText": "错题本"
           }
+        },
+        {
+          "path": "search/index",
+          "style": {
+            "navigationBarTitleText": "题库检索与分类"
+          }
         }
       ]
     },
