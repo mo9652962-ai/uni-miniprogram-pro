@@ -42,6 +42,19 @@
         </view>
       </view>
 
+      <view class="menu-item" @click="goWrongBook">
+        <view class="menu-left">
+          <wd-icon name="error-circle-filled" size="20px" color="#ef4444" />
+          <text class="menu-title">错题专练本</text>
+        </view>
+        <view class="menu-right">
+          <text class="menu-value" :style="{ color: checkinStore.wrongCount > 0 ? '#ef4444' : '#8c8c8c' }">
+            {{ checkinStore.wrongCount }} 题
+          </text>
+          <wd-icon name="chevron-right" size="16px" color="#c8c9cc" />
+        </view>
+      </view>
+
       <!-- 阶段 3 商业实战：微信支付收银台入口 -->
       <view class="menu-item" @click="goVipPay">
         <view class="menu-left">
@@ -131,6 +144,10 @@ onShow(() => {
 
 const goHistory = () => {
   uni.navigateTo({ url: '/subpackages/quiz/history/index' })
+}
+
+const goWrongBook = () => {
+  uni.navigateTo({ url: '/subpackages/quiz/wrong/index' })
 }
 
 const goVipPay = () => {

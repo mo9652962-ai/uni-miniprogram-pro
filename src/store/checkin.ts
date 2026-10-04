@@ -111,8 +111,55 @@ export const useCheckinStore = defineStore('checkin', () => {
     uni.removeStorageSync(STORAGE_KEY)
   }
 
+  // ----------------------------------------------------------------
+  // 错题集 (Wrong Questions Book) 机制
+  // ----------------------------------------------------------------
+  const WRONG_STORAGE_KEY = 'wrong_question_ids'
+  const wrongIds = ref<string[]>(
+    (() => {
+      try {
+        const raw = uni.getStorageSync(WRONG_STORAGE_KEY)
+        return raw ? (JSON.parse(raw) as string[]) : []
+      } catch {
+        return []
+      }
+    })()
+  )
+
+  const persistWrong = () => {
+    uni.setStorageSync(WRONG_STORAGE_KEY, JSON.stringify(wrongIds.value))
+  }
+
+  /** 错题总数 */
+  const wrongCount = computed(() => wrongIds.value.length)
+
+  /** 记录错题（自动去重） */
+  const recordWrong = (questionId: string) => {
+    if (!wrongIds.value.includes(questionId)) {
+      wrongIds.value.push(questionId)
+      persistWrong()
+    }
+  }
+
+  /** 掌握并移出错题集 */
+  const removeWrong = (questionId: string) => {
+    const idx = wrongIds.value.indexOf(questionId)
+    if (idx >= 0) {
+      wrongIds.value.splice(idx, 1)
+      persistWrong()
+    }
+  }
+
+  /** 清空错题集 */
+  const clearAllWrong = () => {
+    wrongIds.value = []
+    uni.removeStorageSync(WRONG_STORAGE_KEY)
+  }
+
   return {
     records,
+    wrongIds,
+    wrongCount,
     checkedInToday,
     todayCount,
     streakDays,
@@ -120,6 +167,10 @@ export const useCheckinStore = defineStore('checkin', () => {
     accuracy,
     recentRecords,
     addRecord,
-    clearAll
+    clearAll,
+    recordWrong,
+    removeWrong,
+    clearAllWrong
   }
 })
+

@@ -58,6 +58,11 @@
           <text class="quick-title">全量练 16 题</text>
           <text class="quick-sub">完整过一轮</text>
         </view>
+        <view class="quick-item" @click="goWrongBook">
+          <wd-icon name="error-circle-filled" size="28px" color="#ef4444" />
+          <text class="quick-title">错题专练本</text>
+          <text class="quick-sub">{{ checkinStore.wrongCount > 0 ? `${checkinStore.wrongCount} 题待攻克` : '全部已掌握' }}</text>
+        </view>
         <view class="quick-item" @click="goSetup">
           <wd-icon name="setting" size="28px" color="#7a7e83" />
           <text class="quick-title">自定义练习</text>
@@ -156,6 +161,10 @@ const startQuick = (count: number) => {
 
 const goSetup = () => {
   uni.navigateTo({ url: '/subpackages/quiz/setup/index' })
+}
+
+const goWrongBook = () => {
+  uni.navigateTo({ url: '/subpackages/quiz/wrong/index' })
 }
 
 const goHistory = () => {

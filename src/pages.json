@@ -39,7 +39,7 @@
         {
           "path": "result/index",
           "style": {
-            "navigationBarTitleText": "练习结果"
+            "navigationBarTitleText": "练习报告"
           }
         },
         {
@@ -48,6 +48,12 @@
             "navigationBarTitleText": "练习记录",
             "enablePullDownRefresh": true,
             "onReachBottomDistance": 50
+          }
+        },
+        {
+          "path": "wrong/index",
+          "style": {
+            "navigationBarTitleText": "错题本"
           }
         }
       ]

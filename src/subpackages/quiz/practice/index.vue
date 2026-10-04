@@ -170,6 +170,11 @@ const finishPractice = async () => {
     durationSec
   })
 
+  // 记录错题到错题集
+  wrongDetails.forEach((w) => {
+    checkinStore.recordWrong(w.questionId)
+  })
+
   // 2. 云端打卡状态与记录异步同步 (阶段 2 核心)
   try {
     await apiSyncPractice({
