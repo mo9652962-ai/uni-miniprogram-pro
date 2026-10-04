@@ -19,13 +19,13 @@
     </view>
 
     <!-- 记录列表 -->
-    <view v-if="records.length === 0" class="empty-box">
+    <view v-if="displayRecords.length === 0 && !loading" class="empty-box">
       <wd-icon name="browse" size="48px" color="#c8c9cc" />
       <text class="empty-text">暂无练习记录</text>
     </view>
 
     <view v-else class="record-list">
-      <view v-for="rec in records" :key="rec.id" class="record-item">
+      <view v-for="rec in displayRecords" :key="rec.id" class="record-item">
         <view class="record-head">
           <view class="record-score" :class="scoreClass(rec)">
             {{ rec.correct }}/{{ rec.total }}
@@ -40,6 +40,9 @@
           <text class="record-duration">用时 {{ formatDuration(rec.durationSec) }}</text>
         </view>
       </view>
+
+      <!-- 阶段 2 核心：分页加载状态组件 -->
+      <wd-loadmore :state="loadMoreState" finished-text="没有更多记录了" />
     </view>
 
     <!-- 清空按钮 -->
@@ -50,11 +53,71 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { ref, computed } from 'vue'
+import { onLoad, onPullDownRefresh, onReachBottom } from '@dcloudio/uni-app'
 import { useCheckinStore, type PracticeRecord } from '@/store/checkin'
 
 const checkinStore = useCheckinStore()
 const records = computed(() => checkinStore.recentRecords)
+
+// 阶段 2 核心：分页状态与触底/下拉联动
+const page = ref(1)
+const pageSize = 5
+const displayRecords = ref<PracticeRecord[]>([])
+const loading = ref(false)
+const hasMore = ref(true)
+
+const loadMoreState = computed<'loading' | 'finished' | 'error'>(() => {
+  if (loading.value) return 'loading'
+  if (!hasMore.value) return 'finished'
+  return 'loading'
+})
+
+const loadData = (reset = false) => {
+  if (reset) {
+    page.value = 1
+    hasMore.value = true
+    displayRecords.value = []
+  }
+
+  if (loading.value || (!hasMore.value && !reset)) return
+
+  loading.value = true
+
+  // 模拟从云数据库集合分页拉取 (skip + limit)
+  setTimeout(() => {
+    const all = records.value
+    const start = (page.value - 1) * pageSize
+    const chunk = all.slice(start, start + pageSize)
+
+    if (reset) {
+      displayRecords.value = chunk
+    } else {
+      displayRecords.value.push(...chunk)
+    }
+
+    hasMore.value = displayRecords.value.length < all.length
+    loading.value = false
+    uni.stopPullDownRefresh()
+  }, 250)
+}
+
+onLoad(() => {
+  loadData(true)
+})
+
+onPullDownRefresh(() => {
+  console.log('🔄 [onPullDownRefresh] 历史记录下拉刷新')
+  loadData(true)
+})
+
+onReachBottom(() => {
+  console.log('📜 [onReachBottom] 触底加载下一页, 当前页:', page.value)
+  if (hasMore.value && !loading.value) {
+    page.value++
+    loadData(false)
+  }
+})
 
 const totalQ = computed(() => records.value.reduce((s, r) => s + r.total, 0))
 

@@ -86,6 +86,7 @@ import { ref, computed } from 'vue'
 import { onShow } from '@dcloudio/uni-app'
 import { useUserStore } from '@/store/user'
 import { useCheckinStore } from '@/store/checkin'
+import { apiLogin } from '@/services/quizApi'
 
 const userStore = useUserStore()
 const checkinStore = useCheckinStore()
@@ -122,18 +123,32 @@ const goCalculator = () => {
   uni.navigateTo({ url: '/subpackages/tools/calculator/index' })
 }
 
-const handleLogin = () => {
+const handleLogin = async () => {
   if (userStore.isLogin) {
     userStore.logout()
     return
   }
-  // 阶段 1：本地模拟登录（阶段 3 会接真实 code2Session）
-  userStore.setToken(`local_token_${Date.now()}`)
-  userStore.setUserInfo({
-    nickName: 'sora',
-    avatarUrl: 'https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg'
-  })
-  uni.showToast({ title: '登录成功', icon: 'success' })
+  // 阶段 2 核心：调用云函数 login 获取 OPENID 并同步用户文档
+  try {
+    uni.showLoading({ title: '云端登录中...' })
+    const res = await apiLogin({
+      nickName: 'sora',
+      avatarUrl: 'https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg'
+    })
+    if (res && res.openid) {
+      userStore.setToken(`cloud_${res.openid.slice(0, 12)}`)
+      userStore.setUserInfo({
+        nickName: res.user?.nickName || 'sora',
+        avatarUrl: res.user?.avatarUrl || 'https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg'
+      })
+      uni.showToast({ title: '登录成功', icon: 'success' })
+    }
+  } catch (err) {
+    console.error('云端登录失败:', err)
+    uni.showToast({ title: '登录降级', icon: 'none' })
+  } finally {
+    uni.hideLoading()
+  }
 }
 </script>
 

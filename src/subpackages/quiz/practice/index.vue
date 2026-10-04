@@ -52,12 +52,14 @@
 import { ref, computed } from 'vue'
 import { onLoad, onUnload } from '@dcloudio/uni-app'
 import QuestionCard from '@/components/quiz/QuestionCard.vue'
-import { pickQuestions, type Question } from '@/data/questions'
+import { type Question } from '@/data/questions'
 import { useCheckinStore } from '@/store/checkin'
+import { apiGetQuestions, apiSyncPractice } from '@/services/quizApi'
 
 const checkinStore = useCheckinStore()
 
 const questions = ref<Question[]>([])
+const loading = ref(true)
 const currentIndex = ref(0)
 const selectedIndex = ref(-1)
 const showResult = ref(false)
@@ -79,14 +81,25 @@ const elapsedText = computed(() => {
   return `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`
 })
 
-// 阶段 1 核心：页面级 onLoad 接收路由参数
-onLoad((options) => {
+// 阶段 2 核心：异步从云端/云仿真拉取题目数据
+onLoad(async (options) => {
   const count = Number(options?.count) || 5
   const tag = options?.tag ? decodeURIComponent(options.tag) : '全部'
 
-  console.log('📌 [onLoad] 接收参数:', { count, tag })
+  console.log('📌 [onLoad] 异步拉取云端题库:', { count, tag })
 
-  questions.value = pickQuestions(count, tag)
+  try {
+    loading.value = true
+    const res = await apiGetQuestions({ tag, count, random: true })
+    if (res && res.list && res.list.length > 0) {
+      questions.value = res.list
+    }
+  } catch (err) {
+    console.error('拉取云端题目失败:', err)
+  } finally {
+    loading.value = false
+  }
+
   answers.value = new Array(questions.value.length).fill(-1)
   startTime.value = Date.now()
 
@@ -127,7 +140,7 @@ const nextQuestion = () => {
   showResult.value = selectedIndex.value !== -1
 }
 
-const finishPractice = () => {
+const finishPractice = async () => {
   if (timer) clearInterval(timer)
 
   const correct = questions.value.reduce((sum, q, i) => {
@@ -139,13 +152,37 @@ const finishPractice = () => {
     ? questions.value[0].tag
     : '综合'
 
-  // 写入本地记录（阶段 1 核心：uni.setStorageSync 持久化）
+  // 整理错题信息
+  const wrongDetails = questions.value
+    .map((q, i) => ({
+      questionId: q.id,
+      stem: q.stem,
+      userAnswer: answers.value[i],
+      answer: q.answer
+    }))
+    .filter((q) => q.userAnswer !== q.answer)
+
+  // 1. 本地存储持久化 (阶段 1 机制)
   checkinStore.addRecord({
     tag,
     total: questions.value.length,
     correct,
     durationSec
   })
+
+  // 2. 云端打卡状态与记录异步同步 (阶段 2 核心)
+  try {
+    await apiSyncPractice({
+      tag,
+      total: questions.value.length,
+      correct,
+      durationSec,
+      wrongDetails
+    })
+    console.log('✅ [CloudBase] 打卡记录已同步至云端集合 practice_records')
+  } catch (err) {
+    console.warn('云端记录同步降级:', err)
+  }
 
   const detail = encodeURIComponent(JSON.stringify({
     correct,

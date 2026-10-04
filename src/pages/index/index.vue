@@ -106,6 +106,7 @@ import { computed } from 'vue'
 import { onShow, onPullDownRefresh } from '@dcloudio/uni-app'
 import { useCheckinStore } from '@/store/checkin'
 import type { PracticeRecord } from '@/store/checkin'
+import { apiGetUserStats } from '@/services/quizApi'
 
 const checkinStore = useCheckinStore()
 
@@ -124,17 +125,27 @@ const dateText = computed(() => {
   return `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日 ${week}`
 })
 
+const loadCloudStats = async () => {
+  try {
+    const stats = await apiGetUserStats()
+    if (stats) {
+      console.log('☁️ [CloudBase] 同步云端数据成功:', stats)
+    }
+  } catch (e) {
+    console.warn('拉取云端看板异常:', e)
+  }
+}
+
 onShow(() => {
-  // 阶段 1 核心：页面级生命周期 onShow —— 回到本页时刷新状态
-  console.log('📌 [onShow] 首页重新展示，打卡状态已刷新')
+  console.log('📌 [onShow] 首页重新展示，拉取云端与本地状态')
+  loadCloudStats()
 })
 
-onPullDownRefresh(() => {
-  // 阶段 1 核心：下拉刷新
-  setTimeout(() => {
-    uni.stopPullDownRefresh()
-    uni.showToast({ title: '已刷新', icon: 'none' })
-  }, 600)
+onPullDownRefresh(async () => {
+  // 阶段 2 核心：下拉刷新同步云端
+  await loadCloudStats()
+  uni.stopPullDownRefresh()
+  uni.showToast({ title: '已同步云端', icon: 'none' })
 })
 
 const startQuick = (count: number) => {
