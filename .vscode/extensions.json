@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "vue.volar",
+    "uni-helper.uni-app-schemas-vscode",
+    "uni-helper.uni-ui-snippets-vscode",
+    "dbaeumer.vscode-eslint"
+  ]
+}

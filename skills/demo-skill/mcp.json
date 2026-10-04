@@ -1,0 +1,26 @@
+{
+  "apis": [
+    {
+      "name": "queryServiceStatus",
+      "description": "查询当前业务系统的运行状态与版本信息。调用前置条件：用户询问系统或服务健康度。",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "serviceId": {
+            "type": "string",
+            "description": "服务标识符，默认为 main"
+          }
+        }
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "status": { "type": "string" },
+          "version": { "type": "string" },
+          "uptime": { "type": "number" }
+        }
+      }
+    }
+  ],
+  "components": []
+}

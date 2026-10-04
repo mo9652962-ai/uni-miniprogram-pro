@@ -1,0 +1,93 @@
+{
+  "easycom": {
+    "autoscan": true,
+    "custom": {
+      "^wd-(.*)": "wot-design-uni/components/wd-$1/wd-$1.vue"
+    }
+  },
+  "pages": [
+    {
+      "path": "pages/index/index",
+      "style": {
+        "navigationBarTitleText": "刷题打卡",
+        "enablePullDownRefresh": true
+      }
+    },
+    {
+      "path": "pages/my/index",
+      "style": {
+        "navigationBarTitleText": "我的"
+      }
+    }
+  ],
+  "subPackages": [
+    {
+      "root": "subpackages/quiz",
+      "pages": [
+        {
+          "path": "setup/index",
+          "style": {
+            "navigationBarTitleText": "开始练习"
+          }
+        },
+        {
+          "path": "practice/index",
+          "style": {
+            "navigationBarTitleText": "答题中"
+          }
+        },
+        {
+          "path": "result/index",
+          "style": {
+            "navigationBarTitleText": "练习结果"
+          }
+        },
+        {
+          "path": "history/index",
+          "style": {
+            "navigationBarTitleText": "练习记录"
+          }
+        }
+      ]
+    },
+    {
+      "root": "subpackages/tools",
+      "pages": [
+        {
+          "path": "calculator/index",
+          "style": {
+            "navigationBarTitleText": "报价估算"
+          }
+        }
+      ]
+    }
+  ],
+  "preloadRule": {
+    "pages/index/index": {
+      "network": "all",
+      "packages": ["subpackages/quiz"]
+    }
+  },
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "刷题打卡",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#4D80F0",
+    "borderStyle": "black",
+    "backgroundColor": "#FFFFFF",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "打卡"
+      },
+      {
+        "pagePath": "pages/my/index",
+        "text": "我的"
+      }
+    ]
+  }
+}

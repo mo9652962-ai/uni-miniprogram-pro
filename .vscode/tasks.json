@@ -1,0 +1,24 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "npm",
+      "script": "dev:mp-weixin",
+      "problemMatcher": [],
+      "label": "npm: dev:mp-weixin (热重载监听)",
+      "detail": "启动微信小程序热重载编译服务，产物输出至 dist/dev/mp-weixin",
+      "isBackground": true,
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "type": "npm",
+      "script": "build:mp-weixin",
+      "problemMatcher": [],
+      "label": "npm: build:mp-weixin (打包生产版)",
+      "detail": "全量打包微信小程序代码至 dist/build/mp-weixin"
+    }
+  ]
+}
