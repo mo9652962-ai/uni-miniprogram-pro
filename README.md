@@ -6,6 +6,7 @@
 ---
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![CI](https://github.com/mo9652962-ai/uni-miniprogram-pro/actions/workflows/ci.yml/badge.svg)](https://github.com/mo9652962-ai/uni-miniprogram-pro/actions)
 [![Vue 3](https://img.shields.io/badge/Vue-3.4+-42b883.svg?logo=vue.js)](https://vuejs.org)
 [![Vite 5](https://img.shields.io/badge/Vite-5.0+-646cff.svg?logo=vite)](https://vitejs.dev)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.2+-3178c6.svg?logo=typescript)](https://www.typescriptlang.org)
@@ -220,6 +221,8 @@ npm run build:mp-weixin
 
 ---
 
-## 📄 开源许可证
+## 📄 许可证、安全与隐私 (License, Security & Privacy)
 
-本项目基于 [MIT 许可证](LICENSE) 开源发布，欢迎自由修改、学习与商业化派生。
+- **开源许可证**：本项目基于 [MIT 许可证](LICENSE) 开源发布，欢迎自由修改、学习与商业化派生。
+- **安全政策**：详见 [SECURITY.md](SECURITY.md)（凭据零泄露红线、敏感配置隔离与双Token防御架构）。
+- **隐私保护**：详见 [PRIVACY.md](PRIVACY.md)（100% 本地优先存储、零第三方遥测追踪）。
