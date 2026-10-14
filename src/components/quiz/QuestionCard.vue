@@ -79,41 +79,44 @@ const optionClass = (i: number) => {
 
 <style lang="scss" scoped>
 .question-card {
+  box-sizing: border-box;
   background: #ffffff;
-  border-radius: 20rpx;
-  padding: 32rpx;
+  border-radius: 24rpx;
+  padding: 36rpx 32rpx;
+  border: 1px solid rgba(228, 233, 242, 0.85);
+  box-shadow: 0 10rpx 30rpx rgba(22, 45, 90, 0.07), 0 2rpx 6rpx rgba(22, 45, 90, 0.03);
 }
 
 .stem-row {
   display: flex;
-  gap: 20rpx;
-  margin-bottom: 32rpx;
+  margin-bottom: 34rpx;
 
   .q-index {
     flex-shrink: 0;
-    width: 52rpx;
-    height: 52rpx;
-    border-radius: 26rpx;
-    background: linear-gradient(135deg, #4d80f0, #2955c8);
+    width: 56rpx;
+    height: 56rpx;
+    border-radius: 28rpx;
+    background: linear-gradient(135deg, #3d73ee, #204ecf);
     color: #fff;
     font-size: 26rpx;
     font-weight: bold;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-right: 22rpx;
+    box-shadow: 0 6rpx 16rpx rgba(32, 78, 207, 0.3);
   }
 
   .stem-content {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 12rpx;
 
     .stem-text {
-      font-size: 30rpx;
+      font-size: 32rpx;
       line-height: 1.6;
       color: #1a1a1a;
-      font-weight: 500;
+      font-weight: 600;
     }
   }
 }
@@ -121,24 +124,28 @@ const optionClass = (i: number) => {
 .options {
   display: flex;
   flex-direction: column;
-  gap: 20rpx;
 }
 
 .option-item {
+  box-sizing: border-box;
   display: flex;
   align-items: center;
-  gap: 20rpx;
-  padding: 26rpx 24rpx;
-  border-radius: 14rpx;
+  padding: 28rpx 26rpx;
+  border-radius: 18rpx;
   background: #f7f8fa;
   border: 2rpx solid transparent;
   transition: all 0.2s;
+  margin-bottom: 22rpx;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 
   .option-marker {
     flex-shrink: 0;
-    width: 48rpx;
-    height: 48rpx;
-    border-radius: 24rpx;
+    width: 52rpx;
+    height: 52rpx;
+    border-radius: 26rpx;
     background: #ffffff;
     border: 2rpx solid #dcdfe6;
     color: #606266;
@@ -147,22 +154,23 @@ const optionClass = (i: number) => {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-right: 22rpx;
   }
 
   .option-text {
     flex: 1;
-    font-size: 28rpx;
-    color: #333;
+    font-size: 29rpx;
+    color: #2c3e50;
     line-height: 1.5;
   }
 
   &.is-selected {
     background: #eef3fe;
-    border-color: #4d80f0;
+    border-color: #3d73ee;
 
     .option-marker {
-      background: #4d80f0;
-      border-color: #4d80f0;
+      background: #3d73ee;
+      border-color: #3d73ee;
       color: #fff;
     }
   }
@@ -191,20 +199,23 @@ const optionClass = (i: number) => {
 }
 
 .explain-box {
-  margin-top: 32rpx;
-  padding: 24rpx;
+  margin-top: 34rpx;
+  padding: 28rpx;
   background: #f5f8ff;
-  border-radius: 14rpx;
-  border-left: 6rpx solid #4d80f0;
+  border-radius: 18rpx;
+  border-left: 6rpx solid #3d73ee;
 
   .explain-title {
     display: flex;
     align-items: center;
-    gap: 10rpx;
-    font-size: 26rpx;
-    font-weight: 600;
-    color: #4d80f0;
-    margin-bottom: 14rpx;
+    font-size: 28rpx;
+    font-weight: 700;
+    color: #3d73ee;
+    margin-bottom: 16rpx;
+
+    text {
+      margin-left: 10rpx;
+    }
   }
 
   .explain-text {

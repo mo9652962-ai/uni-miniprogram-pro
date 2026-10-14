@@ -190,46 +190,50 @@ const handleLogin = async () => {
 <style lang="scss" scoped>
 .page {
   min-height: 100vh;
-  padding: 24rpx;
-  display: flex;
-  flex-direction: column;
-  gap: 24rpx;
+  padding: 28rpx 26rpx 60rpx;
   box-sizing: border-box;
 }
 
 .profile-card {
+  box-sizing: border-box;
   background: #fff;
-  border-radius: 20rpx;
-  padding: 32rpx;
+  border-radius: 26rpx;
+  padding: 36rpx 32rpx;
   display: flex;
   align-items: center;
-  gap: 24rpx;
+  margin-bottom: 32rpx;
+  border: 1px solid rgba(228, 233, 242, 0.8);
+  box-shadow: 0 10rpx 28rpx rgba(22, 45, 90, 0.07), 0 2rpx 6rpx rgba(22, 45, 90, 0.03);
 
   .avatar {
-    width: 120rpx;
-    height: 120rpx;
-    border-radius: 60rpx;
+    width: 128rpx;
+    height: 128rpx;
+    border-radius: 64rpx;
     background: #f2f3f5;
+    margin-right: 28rpx;
+    flex-shrink: 0;
   }
 
   .profile-info {
     display: flex;
     flex-direction: column;
-    gap: 12rpx;
+    flex: 1;
 
     .nickname {
-      font-size: 34rpx;
-      font-weight: 600;
+      font-size: 36rpx;
+      font-weight: 700;
       color: #1a1a1a;
+      margin-bottom: 14rpx;
     }
 
     .status-tag {
       align-self: flex-start;
       font-size: 22rpx;
-      padding: 4rpx 16rpx;
+      padding: 6rpx 20rpx;
       border-radius: 20rpx;
       background: #f2f3f5;
       color: #8c8c8c;
+      font-weight: 500;
 
       &.is-login {
         background: #eaf9ef;
@@ -240,53 +244,62 @@ const handleLogin = async () => {
 }
 
 .stat-card {
-  background: linear-gradient(135deg, #4d80f0 0%, #2955c8 100%);
-  border-radius: 20rpx;
-  padding: 32rpx 0;
+  box-sizing: border-box;
+  background: linear-gradient(135deg, #3d73ee 0%, #204ecf 100%);
+  border-radius: 26rpx;
+  padding: 36rpx 0;
   display: flex;
   align-items: center;
   color: #fff;
+  margin-bottom: 34rpx;
+  box-shadow: 0 16rpx 40rpx rgba(32, 78, 207, 0.32), 0 4rpx 12rpx rgba(32, 78, 207, 0.15);
 
   .stat-item {
     flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 6rpx;
 
     .stat-num {
-      font-size: 42rpx;
-      font-weight: bold;
+      font-size: 46rpx;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 8rpx;
 
       .unit {
-        font-size: 22rpx;
+        font-size: 24rpx;
+        font-weight: 600;
       }
     }
 
     .stat-label {
-      font-size: 22rpx;
-      opacity: 0.85;
+      font-size: 24rpx;
+      opacity: 0.88;
     }
   }
 
   .stat-divider {
     width: 2rpx;
-    height: 48rpx;
-    background: rgba(255, 255, 255, 0.24);
+    height: 52rpx;
+    background: rgba(255, 255, 255, 0.28);
   }
 }
 
 .menu-card {
+  box-sizing: border-box;
   background: #fff;
-  border-radius: 18rpx;
+  border-radius: 24rpx;
   overflow: hidden;
+  margin-bottom: 34rpx;
+  border: 1px solid rgba(228, 233, 242, 0.8);
+  box-shadow: 0 10rpx 28rpx rgba(22, 45, 90, 0.06);
 
   .menu-item {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 30rpx 28rpx;
-    border-bottom: 1rpx solid #f2f3f5;
+    padding: 32rpx 30rpx;
+    border-bottom: 1px solid #f2f3f5;
 
     &:last-child {
       border-bottom: none;
@@ -295,68 +308,73 @@ const handleLogin = async () => {
     .menu-left {
       display: flex;
       align-items: center;
-      gap: 18rpx;
 
       .menu-title {
-        font-size: 28rpx;
-        color: #333;
+        font-size: 30rpx;
+        color: #1a1a1a;
+        font-weight: 500;
+        margin-left: 20rpx;
       }
     }
 
     .menu-right {
       display: flex;
       align-items: center;
-      gap: 10rpx;
 
       .menu-value {
-        font-size: 24rpx;
-        color: #a0a0a0;
+        font-size: 26rpx;
+        color: #9aa1af;
+        margin-right: 10rpx;
       }
     }
   }
 }
 
 .debug-card {
+  box-sizing: border-box;
   background: #fff;
-  border-radius: 18rpx;
-  padding: 24rpx 28rpx;
+  border-radius: 24rpx;
+  padding: 28rpx 30rpx;
+  border: 1px solid rgba(228, 233, 242, 0.8);
+  box-shadow: 0 10rpx 28rpx rgba(22, 45, 90, 0.05);
 
   .debug-head {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 18rpx;
+    margin-bottom: 20rpx;
 
     .debug-title {
-      font-size: 26rpx;
-      font-weight: 600;
+      font-size: 28rpx;
+      font-weight: 700;
       color: #1a1a1a;
     }
 
     .debug-refresh {
-      font-size: 22rpx;
+      font-size: 24rpx;
       color: #4d80f0;
+      font-weight: 500;
     }
   }
 
   .debug-row {
     display: flex;
     justify-content: space-between;
-    padding: 12rpx 0;
-    border-bottom: 1rpx dashed #f0f1f4;
+    padding: 14rpx 0;
+    border-bottom: 1px dashed #f0f1f4;
 
     &:last-child {
       border-bottom: none;
     }
 
     .debug-key {
-      font-size: 23rpx;
+      font-size: 24rpx;
       color: #8c8c8c;
       font-family: monospace;
     }
 
     .debug-val {
-      font-size: 23rpx;
+      font-size: 24rpx;
       color: #333;
       font-family: monospace;
     }

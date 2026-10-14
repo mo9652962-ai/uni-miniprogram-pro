@@ -74,84 +74,97 @@ const start = () => {
 <style lang="scss" scoped>
 .page {
   min-height: 100vh;
-  padding: 24rpx;
+  padding: 28rpx 26rpx 60rpx;
   display: flex;
   flex-direction: column;
-  gap: 28rpx;
   box-sizing: border-box;
 }
 
 .head-card {
-  background: linear-gradient(135deg, #4d80f0 0%, #2955c8 100%);
-  border-radius: 20rpx;
-  padding: 36rpx 32rpx;
+  box-sizing: border-box;
+  background: linear-gradient(135deg, #3d73ee 0%, #204ecf 100%);
+  border-radius: 26rpx;
+  padding: 40rpx 32rpx;
   color: #fff;
   display: flex;
   flex-direction: column;
-  gap: 10rpx;
+  margin-bottom: 34rpx;
+  box-shadow: 0 16rpx 40rpx rgba(32, 78, 207, 0.32), 0 4rpx 12rpx rgba(32, 78, 207, 0.15);
 
   .head-title {
-    font-size: 38rpx;
-    font-weight: bold;
+    font-size: 40rpx;
+    font-weight: 800;
+    margin-bottom: 10rpx;
+    letter-spacing: 0.5rpx;
   }
 
   .head-sub {
     font-size: 24rpx;
-    opacity: 0.85;
+    opacity: 0.88;
   }
 }
 
 .block {
+  box-sizing: border-box;
   background: #fff;
-  border-radius: 18rpx;
-  padding: 28rpx;
+  border-radius: 24rpx;
+  padding: 32rpx;
+  margin-bottom: 34rpx;
+  border: 1px solid rgba(228, 233, 242, 0.8);
+  box-shadow: 0 10rpx 28rpx rgba(22, 45, 90, 0.06);
 
   .block-title {
-    font-size: 28rpx;
-    font-weight: 600;
+    font-size: 30rpx;
+    font-weight: 700;
     color: #1a1a1a;
     display: block;
-    margin-bottom: 20rpx;
+    margin-bottom: 24rpx;
   }
 }
 
 .count-grid {
   display: flex;
-  gap: 20rpx;
 
   .count-item {
+    box-sizing: border-box;
     flex: 1;
-    height: 110rpx;
-    border-radius: 14rpx;
+    height: 116rpx;
+    border-radius: 18rpx;
     background: #f7f8fa;
     border: 2rpx solid transparent;
     display: flex;
     align-items: baseline;
     justify-content: center;
-    gap: 4rpx;
+    margin-right: 18rpx;
     transition: all 0.2s;
 
+    &:last-child {
+      margin-right: 0;
+    }
+
     .count-num {
-      font-size: 40rpx;
-      font-weight: bold;
+      font-size: 42rpx;
+      font-weight: 800;
       color: #333;
+      margin-right: 4rpx;
     }
 
     .count-unit {
-      font-size: 22rpx;
+      font-size: 24rpx;
       color: #999;
+      font-weight: 500;
     }
 
     &.is-active {
       background: #eef3fe;
-      border-color: #4d80f0;
+      border-color: #3d73ee;
 
       .count-num {
-        color: #4d80f0;
+        color: #3d73ee;
       }
 
       .count-unit {
-        color: #4d80f0;
+        color: #3d73ee;
       }
     }
   }
@@ -160,31 +173,33 @@ const start = () => {
 .tag-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 20rpx;
 
   .tag-item {
+    box-sizing: border-box;
     padding: 16rpx 32rpx;
     border-radius: 40rpx;
     background: #f7f8fa;
     border: 2rpx solid transparent;
     font-size: 26rpx;
     color: #555;
+    margin-right: 18rpx;
+    margin-bottom: 18rpx;
     transition: all 0.2s;
 
     &.is-active {
       background: #eef3fe;
-      border-color: #4d80f0;
-      color: #4d80f0;
-      font-weight: 500;
+      border-color: #3d73ee;
+      color: #3d73ee;
+      font-weight: 600;
     }
   }
 }
 
 .tag-hint {
   display: block;
-  margin-top: 20rpx;
-  font-size: 22rpx;
-  color: #a0a0a0;
+  margin-top: 10rpx;
+  font-size: 23rpx;
+  color: #9aa1af;
 }
 
 .footer {

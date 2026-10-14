@@ -187,21 +187,23 @@ const retry = () => {
 <style lang="scss" scoped>
 .page {
   min-height: 100vh;
-  padding: 24rpx;
+  padding: 28rpx 26rpx 60rpx;
   display: flex;
   flex-direction: column;
-  gap: 28rpx;
   box-sizing: border-box;
 }
 
 .score-card {
+  box-sizing: border-box;
   background: #ffffff;
-  border-radius: 24rpx;
-  padding: 44rpx 32rpx 32rpx;
+  border-radius: 26rpx;
+  padding: 48rpx 32rpx 36rpx;
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: 0 6rpx 24rpx rgba(0, 0, 0, 0.05);
+  margin-bottom: 34rpx;
+  border: 1px solid rgba(228, 233, 242, 0.85);
+  box-shadow: 0 10rpx 28rpx rgba(22, 45, 90, 0.07);
 
   .circle-wrap {
     margin-bottom: 24rpx;
@@ -213,22 +215,24 @@ const retry = () => {
     justify-content: center;
 
     .circle-num {
-      font-size: 72rpx;
-      font-weight: bold;
+      font-size: 76rpx;
+      font-weight: 800;
       color: #1a1a1a;
     }
 
     .circle-unit {
-      font-size: 26rpx;
+      font-size: 28rpx;
       color: #8c8c8c;
-      margin-left: 4rpx;
+      margin-left: 6rpx;
+      font-weight: 600;
     }
   }
 
   .score-comment {
-    font-size: 28rpx;
-    color: #555;
-    margin-bottom: 36rpx;
+    font-size: 30rpx;
+    font-weight: 600;
+    color: #444;
+    margin-bottom: 38rpx;
   }
 
   .score-meta {
@@ -241,49 +245,54 @@ const retry = () => {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 6rpx;
       flex: 1;
 
       .meta-num {
-        font-size: 32rpx;
-        font-weight: 600;
+        font-size: 34rpx;
+        font-weight: 700;
         color: #1a1a1a;
+        margin-bottom: 6rpx;
       }
 
       .meta-label {
-        font-size: 22rpx;
-        color: #a0a0a0;
+        font-size: 24rpx;
+        color: #9aa1af;
       }
     }
 
     .meta-divider {
       width: 2rpx;
       height: 44rpx;
-      background: #f0f1f4;
+      background: #e8eaef;
     }
   }
 }
 
 .block {
-  background: #ffffff;
-  border-radius: 18rpx;
-  padding: 28rpx;
+  box-sizing: border-box;
+  background: #fff;
+  border-radius: 24rpx;
+  padding: 32rpx;
+  margin-bottom: 34rpx;
+  border: 1px solid rgba(228, 233, 242, 0.85);
+  box-shadow: 0 10rpx 28rpx rgba(22, 45, 90, 0.06);
 
   .block-head {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20rpx;
+    margin-bottom: 24rpx;
 
     .block-title {
       font-size: 30rpx;
-      font-weight: 600;
+      font-weight: 700;
       color: #1a1a1a;
     }
 
     .block-sub {
       font-size: 24rpx;
       color: #f5222d;
+      font-weight: 600;
     }
   }
 }
@@ -292,71 +301,79 @@ const retry = () => {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16rpx;
-  padding: 40rpx 0;
+  padding: 44rpx 0;
 
   .all-right-text {
-    font-size: 26rpx;
+    margin-top: 16rpx;
+    font-size: 28rpx;
     color: #34c759;
+    font-weight: 600;
   }
 }
 
 .wrong-list {
   display: flex;
   flex-direction: column;
-  gap: 24rpx;
 }
 
 .wrong-item {
+  box-sizing: border-box;
   background: #fafbfc;
-  border-radius: 14rpx;
-  padding: 24rpx;
+  border-radius: 18rpx;
+  padding: 26rpx;
+  margin-bottom: 22rpx;
+  border: 1px solid #f0f2f5;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 
   .wrong-stem {
     display: flex;
-    gap: 14rpx;
-    margin-bottom: 18rpx;
+    margin-bottom: 20rpx;
 
     .wrong-index {
       flex-shrink: 0;
-      width: 40rpx;
-      height: 40rpx;
-      border-radius: 20rpx;
+      width: 44rpx;
+      height: 44rpx;
+      border-radius: 22rpx;
       background: #fef0ef;
       color: #f5222d;
-      font-size: 22rpx;
-      font-weight: 600;
+      font-size: 24rpx;
+      font-weight: 700;
       display: flex;
       align-items: center;
       justify-content: center;
+      margin-right: 16rpx;
     }
 
     .wrong-text {
       flex: 1;
-      font-size: 27rpx;
+      font-size: 28rpx;
       line-height: 1.55;
-      color: #333;
+      color: #2c3e50;
+      font-weight: 500;
     }
   }
 
   .wrong-answers {
     display: flex;
-    gap: 32rpx;
-    margin-bottom: 18rpx;
+    margin-bottom: 20rpx;
 
     .answer-row {
       display: flex;
       align-items: center;
-      gap: 10rpx;
+      margin-right: 32rpx;
 
       .answer-label {
-        font-size: 22rpx;
-        color: #a0a0a0;
+        font-size: 24rpx;
+        color: #9aa1af;
+        margin-right: 8rpx;
       }
 
       .answer-value {
-        font-size: 24rpx;
-        font-weight: 600;
+        font-size: 26rpx;
+        font-weight: 700;
 
         &.is-wrong {
           color: #f5222d;
@@ -370,22 +387,22 @@ const retry = () => {
   }
 
   .wrong-explain {
-    padding-top: 16rpx;
-    border-top: 1rpx dashed #e8eaef;
+    padding-top: 18rpx;
+    border-top: 1px dashed #e5e8f0;
     display: flex;
     flex-direction: column;
-    gap: 8rpx;
 
     .explain-label {
-      font-size: 22rpx;
-      color: #4d80f0;
-      font-weight: 600;
+      font-size: 24rpx;
+      color: #3d73ee;
+      font-weight: 700;
+      margin-bottom: 8rpx;
     }
 
     .explain-text {
-      font-size: 24rpx;
+      font-size: 25rpx;
       line-height: 1.6;
-      color: #666;
+      color: #555;
     }
   }
 }
@@ -393,8 +410,15 @@ const retry = () => {
 .footer {
   margin-top: auto;
   display: flex;
-  gap: 20rpx;
   padding-bottom: env(safe-area-inset-bottom);
+
+  :deep(.wd-button) {
+    margin-right: 20rpx;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
 
   :deep(.wd-button:first-child) {
     flex-shrink: 0;

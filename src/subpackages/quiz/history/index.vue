@@ -177,90 +177,103 @@ const handleClear = () => {
 <style lang="scss" scoped>
 .page {
   min-height: 100vh;
-  padding: 24rpx;
+  padding: 28rpx 26rpx 60rpx;
   display: flex;
   flex-direction: column;
-  gap: 24rpx;
   box-sizing: border-box;
 }
 
 .summary-card {
-  background: linear-gradient(135deg, #4d80f0 0%, #2955c8 100%);
-  border-radius: 20rpx;
-  padding: 32rpx 0;
+  box-sizing: border-box;
+  background: linear-gradient(135deg, #3d73ee 0%, #204ecf 100%);
+  border-radius: 26rpx;
+  padding: 38rpx 0;
   display: flex;
   align-items: center;
   justify-content: space-around;
   color: #fff;
+  margin-bottom: 34rpx;
+  box-shadow: 0 16rpx 40rpx rgba(32, 78, 207, 0.32), 0 4rpx 12rpx rgba(32, 78, 207, 0.15);
 
   .sum-item {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 6rpx;
     flex: 1;
 
     .sum-num {
-      font-size: 42rpx;
-      font-weight: bold;
+      font-size: 46rpx;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 8rpx;
 
       .unit {
-        font-size: 22rpx;
+        font-size: 24rpx;
+        font-weight: 600;
       }
     }
 
     .sum-label {
-      font-size: 22rpx;
-      opacity: 0.85;
+      font-size: 24rpx;
+      opacity: 0.88;
     }
   }
 
   .sum-divider {
     width: 2rpx;
-    height: 48rpx;
-    background: rgba(255, 255, 255, 0.24);
+    height: 52rpx;
+    background: rgba(255, 255, 255, 0.28);
   }
 }
 
 .empty-box {
   background: #fff;
-  border-radius: 18rpx;
-  padding: 100rpx 0;
+  border-radius: 24rpx;
+  padding: 110rpx 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20rpx;
+  border: 1px solid rgba(228, 233, 242, 0.85);
+  box-shadow: 0 10rpx 28rpx rgba(22, 45, 90, 0.05);
 
   .empty-text {
+    margin-top: 20rpx;
     font-size: 26rpx;
-    color: #a0a0a0;
+    color: #9aa1af;
   }
 }
 
 .record-list {
   display: flex;
   flex-direction: column;
-  gap: 20rpx;
 }
 
 .record-item {
+  box-sizing: border-box;
   background: #fff;
-  border-radius: 16rpx;
-  padding: 24rpx;
+  border-radius: 22rpx;
+  padding: 28rpx;
+  margin-bottom: 24rpx;
+  border: 1px solid rgba(228, 233, 242, 0.85);
+  box-shadow: 0 8rpx 24rpx rgba(22, 45, 90, 0.06);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 
   .record-head {
     display: flex;
     align-items: center;
 
     .record-score {
-      width: 104rpx;
-      height: 60rpx;
-      border-radius: 12rpx;
+      width: 108rpx;
+      height: 64rpx;
+      border-radius: 14rpx;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 26rpx;
-      font-weight: 600;
+      font-size: 28rpx;
+      font-weight: 700;
       background: #f2f3f5;
       color: #666;
 
@@ -283,12 +296,12 @@ const handleClear = () => {
       margin-left: 24rpx;
       display: flex;
       flex-direction: column;
-      gap: 6rpx;
 
       .record-tag {
-        font-size: 27rpx;
-        color: #333;
-        font-weight: 500;
+        font-size: 28rpx;
+        color: #1a1a1a;
+        font-weight: 600;
+        margin-bottom: 6rpx;
       }
 
       .record-time {
@@ -316,7 +329,7 @@ const handleClear = () => {
   .record-foot {
     margin-top: 16rpx;
     padding-top: 16rpx;
-    border-top: 1rpx solid #f2f3f5;
+    border-top: 1px solid #f2f3f5;
 
     .record-duration {
       font-size: 22rpx;

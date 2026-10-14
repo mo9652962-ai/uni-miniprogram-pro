@@ -49,84 +49,98 @@ const goBack = () => {
 
 <style lang="scss" scoped>
 .container {
-  padding: 24rpx;
+  box-sizing: border-box;
+  padding: 28rpx 26rpx 60rpx;
   display: flex;
   flex-direction: column;
-  gap: 24rpx;
 }
 
 .banner {
-  background: #34495e;
-  padding: 30rpx;
-  border-radius: 16rpx;
+  box-sizing: border-box;
+  background: linear-gradient(135deg, #2c3e50 0%, #1a252f 100%);
+  padding: 34rpx 32rpx;
+  border-radius: 24rpx;
   color: #fff;
+  margin-bottom: 30rpx;
+  box-shadow: 0 12rpx 32rpx rgba(26, 37, 47, 0.25);
 
   .title {
-    font-size: 32rpx;
-    font-weight: bold;
+    font-size: 34rpx;
+    font-weight: 800;
     display: block;
-    margin-bottom: 8rpx;
+    margin-bottom: 10rpx;
+    letter-spacing: 0.5rpx;
   }
 
   .subtitle {
-    font-size: 22rpx;
-    opacity: 0.8;
+    font-size: 24rpx;
+    opacity: 0.85;
   }
 }
 
 .card {
+  box-sizing: border-box;
   background: #fff;
-  padding: 28rpx;
-  border-radius: 16rpx;
+  padding: 32rpx;
+  border-radius: 24rpx;
+  margin-bottom: 28rpx;
+  border: 1px solid rgba(228, 233, 242, 0.85);
+  box-shadow: 0 10rpx 28rpx rgba(22, 45, 90, 0.06);
 
   .card-title {
-    font-size: 28rpx;
-    font-weight: 600;
-    margin-bottom: 16rpx;
+    font-size: 30rpx;
+    font-weight: 700;
+    margin-bottom: 20rpx;
+    color: #1a1a1a;
   }
 
   .param-val {
     font-size: 26rpx;
-    color: #4d80f0;
+    color: #3d73ee;
+    font-weight: 600;
   }
 
   .form-row {
     display: flex;
     align-items: center;
-    gap: 16rpx;
-    margin-top: 16rpx;
+    margin-top: 20rpx;
 
     .label {
-      font-size: 26rpx;
-      color: #555;
+      font-size: 28rpx;
+      color: #4a5568;
+      width: 140rpx;
+      flex-shrink: 0;
     }
 
     .input {
       flex: 1;
-      height: 72rpx;
-      border: 1rpx solid #e0e0e0;
-      border-radius: 8rpx;
-      padding: 0 16rpx;
+      height: 76rpx;
+      border: 1px solid #e2e8f0;
+      border-radius: 12rpx;
+      padding: 0 20rpx;
       font-size: 28rpx;
+      background: #fafbfc;
     }
   }
 
   .result-row {
-    margin-top: 24rpx;
+    margin-top: 28rpx;
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: 28rpx;
+    padding-top: 20rpx;
+    border-top: 1px dashed #edf0f5;
 
     .total {
-      font-size: 36rpx;
-      font-weight: bold;
+      font-size: 40rpx;
+      font-weight: 800;
       color: #ff4d4f;
     }
   }
 
   .mt-3 {
-    margin-top: 24rpx;
+    margin-top: 28rpx;
   }
 }
 </style>

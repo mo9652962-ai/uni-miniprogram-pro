@@ -215,44 +215,48 @@ const finishPractice = async () => {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  padding: 24rpx;
+  padding: 28rpx 26rpx 40rpx;
   box-sizing: border-box;
 }
 
 .progress-bar-wrap {
-  margin-bottom: 24rpx;
+  margin-bottom: 28rpx;
 
   .progress-info {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 14rpx;
+    margin-bottom: 16rpx;
 
     .progress-text {
-      font-size: 26rpx;
-      font-weight: 600;
-      color: #4d80f0;
+      font-size: 28rpx;
+      font-weight: 700;
+      color: #3d73ee;
     }
 
     .progress-timer {
       display: flex;
       align-items: center;
-      gap: 6rpx;
-      font-size: 24rpx;
-      color: #8c8c8c;
+      font-size: 26rpx;
+      color: #8c93a0;
+      font-weight: 500;
+
+      text {
+        margin-left: 8rpx;
+      }
     }
   }
 
   .progress-track {
-    height: 10rpx;
-    background: #e8eaef;
-    border-radius: 5rpx;
+    height: 12rpx;
+    background: #e5e8f0;
+    border-radius: 6rpx;
     overflow: hidden;
 
     .progress-fill {
       height: 100%;
-      background: linear-gradient(90deg, #4d80f0, #2955c8);
-      border-radius: 5rpx;
+      background: linear-gradient(90deg, #3d73ee, #204ecf);
+      border-radius: 6rpx;
       transition: width 0.3s ease;
     }
   }
@@ -260,7 +264,7 @@ const finishPractice = async () => {
 
 .card-wrap {
   flex: 1;
-  margin-bottom: 24rpx;
+  margin-bottom: 32rpx;
 }
 
 .footer {
@@ -268,7 +272,14 @@ const finishPractice = async () => {
 
   .footer-actions {
     display: flex;
-    gap: 20rpx;
+
+    :deep(.wd-button) {
+      margin-right: 20rpx;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
 
     :deep(.wd-button:first-child) {
       flex-shrink: 0;

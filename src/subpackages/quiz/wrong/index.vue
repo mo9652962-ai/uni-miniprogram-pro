@@ -197,68 +197,81 @@ const goPractice = () => {
 .wrong-list {
   display: flex;
   flex-direction: column;
-  gap: 24rpx;
 }
 
 .wrong-card {
+  box-sizing: border-box;
   background: #ffffff;
-  border-radius: 20rpx;
-  padding: 30rpx;
-  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.04);
+  border-radius: 24rpx;
+  padding: 34rpx 30rpx;
+  margin-bottom: 26rpx;
+  border: 1px solid rgba(228, 233, 242, 0.85);
+  box-shadow: 0 10rpx 28rpx rgba(22, 45, 90, 0.07);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 
   .card-header {
     display: flex;
     align-items: center;
-    gap: 16rpx;
-    margin-bottom: 20rpx;
+    margin-bottom: 22rpx;
 
     .q-badge {
       background: #fee2e2;
       color: #ef4444;
       font-size: 22rpx;
-      padding: 4rpx 12rpx;
+      padding: 6rpx 14rpx;
       border-radius: 8rpx;
       font-weight: bold;
+      margin-right: 16rpx;
     }
 
     .remove-action {
       margin-left: auto;
       display: flex;
       align-items: center;
-      gap: 6rpx;
-      font-size: 22rpx;
-      color: #999;
+      font-size: 24rpx;
+      color: #9aa1af;
+
+      text {
+        margin-left: 6rpx;
+      }
     }
   }
 
   .stem-text {
-    font-size: 30rpx;
-    font-weight: 500;
-    color: #222;
-    line-height: 1.5;
-    margin-bottom: 24rpx;
+    font-size: 32rpx;
+    font-weight: 600;
+    color: #1a1a1a;
+    line-height: 1.55;
+    margin-bottom: 26rpx;
     display: block;
   }
 
   .options-box {
     display: flex;
     flex-direction: column;
-    gap: 12rpx;
-    margin-bottom: 20rpx;
+    margin-bottom: 22rpx;
 
     .option-row {
       display: flex;
       align-items: center;
-      padding: 16rpx 20rpx;
+      padding: 20rpx 22rpx;
       background: #f8f9fa;
-      border-radius: 12rpx;
-      font-size: 26rpx;
-      color: #444;
+      border-radius: 14rpx;
+      font-size: 27rpx;
+      color: #333;
+      margin-bottom: 12rpx;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
 
       &.is-correct {
         background: #e6f7ed;
         color: #166534;
-        font-weight: 500;
+        font-weight: 600;
       }
 
       .opt-label {
@@ -274,24 +287,27 @@ const goPractice = () => {
 
   .explain-box {
     background: #fffbe6;
-    border: 1rpx solid #ffe58f;
-    border-radius: 12rpx;
-    padding: 20rpx;
+    border: 1px solid #ffe58f;
+    border-radius: 14rpx;
+    padding: 22rpx;
 
     .explain-head {
       display: flex;
       align-items: center;
-      gap: 8rpx;
-      font-size: 24rpx;
+      font-size: 25rpx;
       font-weight: bold;
       color: #d46b08;
-      margin-bottom: 8rpx;
+      margin-bottom: 10rpx;
+
+      text {
+        margin-left: 8rpx;
+      }
     }
 
     .explain-text {
-      font-size: 24rpx;
+      font-size: 25rpx;
       color: #873800;
-      line-height: 1.5;
+      line-height: 1.55;
     }
   }
 }

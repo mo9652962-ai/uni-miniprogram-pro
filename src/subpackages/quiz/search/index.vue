@@ -233,44 +233,50 @@ onShareTimeline(() => {
 .search-input-box {
   background: #ffffff;
   border-radius: 40rpx;
-  height: 76rpx;
-  padding: 0 28rpx;
+  height: 80rpx;
+  padding: 0 30rpx;
   display: flex;
   align-items: center;
-  gap: 16rpx;
-  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(228, 233, 242, 0.85);
+  box-shadow: 0 6rpx 20rpx rgba(22, 45, 90, 0.05);
 
   .search-input {
     flex: 1;
     font-size: 28rpx;
     color: #1a1a1a;
+    margin-left: 14rpx;
   }
 }
 
 .tag-scroll {
   white-space: nowrap;
-  margin-bottom: 20rpx;
+  margin-bottom: 24rpx;
 }
 
 .tag-list {
   display: inline-flex;
-  gap: 16rpx;
   padding-right: 20rpx;
 }
 
 .tag-item {
   display: inline-flex;
   align-items: center;
-  gap: 8rpx;
-  padding: 12rpx 24rpx;
+  padding: 14rpx 26rpx;
   background: #ffffff;
-  border-radius: 30rpx;
-  border: 1rpx solid #e2e8f0;
+  border-radius: 32rpx;
+  border: 1px solid #e2e8f0;
+  margin-right: 16rpx;
   transition: all 0.2s ease;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.02);
+
+  &:last-child {
+    margin-right: 0;
+  }
 
   &.is-active {
-    background: #4d80f0;
-    border-color: #4d80f0;
+    background: #3d73ee;
+    border-color: #3d73ee;
+    box-shadow: 0 6rpx 16rpx rgba(61, 115, 238, 0.3);
 
     .tag-name,
     .tag-count {
@@ -285,8 +291,9 @@ onShareTimeline(() => {
   }
 
   .tag-count {
-    font-size: 20rpx;
+    font-size: 22rpx;
     color: #a0aec0;
+    margin-left: 8rpx;
   }
 }
 
@@ -294,7 +301,7 @@ onShareTimeline(() => {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20rpx;
+  margin-bottom: 22rpx;
   padding: 0 8rpx;
 
   .summary-text {
@@ -302,86 +309,96 @@ onShareTimeline(() => {
     color: #8c8c8c;
 
     .highlight {
-      color: #4d80f0;
+      color: #3d73ee;
       font-weight: bold;
     }
   }
 
   .batch-practice-btn {
     font-size: 24rpx;
-    color: #4d80f0;
-    font-weight: 500;
+    color: #3d73ee;
+    font-weight: 600;
   }
 }
 
 .question-list {
   display: flex;
   flex-direction: column;
-  gap: 20rpx;
 }
 
 .q-card {
+  box-sizing: border-box;
   background: #ffffff;
-  border-radius: 18rpx;
-  padding: 26rpx;
-  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.03);
+  border-radius: 22rpx;
+  padding: 30rpx;
+  margin-bottom: 22rpx;
+  border: 1px solid rgba(228, 233, 242, 0.85);
+  box-shadow: 0 8rpx 24rpx rgba(22, 45, 90, 0.06);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 
   .q-head {
     display: flex;
     align-items: center;
-    gap: 12rpx;
-    margin-bottom: 16rpx;
+    margin-bottom: 18rpx;
 
     .q-idx {
-      width: 40rpx;
-      height: 40rpx;
-      border-radius: 20rpx;
+      width: 44rpx;
+      height: 44rpx;
+      border-radius: 22rpx;
       background: #edf2f7;
       color: #4a5568;
-      font-size: 22rpx;
+      font-size: 24rpx;
       font-weight: bold;
       display: flex;
       align-items: center;
       justify-content: center;
+      margin-right: 14rpx;
     }
 
     .expand-tip {
       margin-left: auto;
       font-size: 22rpx;
-      color: #999;
+      color: #9aa1af;
     }
   }
 
   .q-stem {
-    font-size: 28rpx;
+    font-size: 30rpx;
     color: #1a1a1a;
-    line-height: 1.5;
-    font-weight: 500;
+    line-height: 1.55;
+    font-weight: 600;
     display: block;
   }
 
   .expand-body {
-    margin-top: 20rpx;
-    border-top: 1rpx dashed #edf0f5;
-    padding-top: 20rpx;
+    margin-top: 22rpx;
+    border-top: 1px dashed #edf0f5;
+    padding-top: 22rpx;
     animation: fadeIn 0.2s ease;
   }
 
   .options-group {
     display: flex;
     flex-direction: column;
-    gap: 10rpx;
-    margin-bottom: 16rpx;
+    margin-bottom: 18rpx;
   }
 
   .opt-line {
     display: flex;
     align-items: center;
-    padding: 12rpx 16rpx;
+    padding: 14rpx 18rpx;
     background: #f8fafc;
-    border-radius: 10rpx;
-    font-size: 24rpx;
+    border-radius: 12rpx;
+    font-size: 25rpx;
     color: #4a5568;
+    margin-bottom: 10rpx;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
 
     &.is-answer {
       background: #e6f7ed;
@@ -400,24 +417,27 @@ onShareTimeline(() => {
 
   .explain-wrap {
     background: #fffbe6;
-    border: 1rpx solid #ffe58f;
-    border-radius: 10rpx;
-    padding: 16rpx;
+    border: 1px solid #ffe58f;
+    border-radius: 12rpx;
+    padding: 18rpx;
 
     .explain-title {
       display: flex;
       align-items: center;
-      gap: 8rpx;
-      font-size: 22rpx;
+      font-size: 24rpx;
       color: #d46b08;
       font-weight: bold;
-      margin-bottom: 6rpx;
+      margin-bottom: 8rpx;
+
+      text {
+        margin-left: 8rpx;
+      }
     }
 
     .explain-detail {
-      font-size: 22rpx;
+      font-size: 23rpx;
       color: #873800;
-      line-height: 1.4;
+      line-height: 1.45;
     }
   }
 }

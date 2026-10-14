@@ -287,17 +287,17 @@ const formatTime = (ts: number) => {
   .vip-top {
     display: flex;
     align-items: center;
-    gap: 20rpx;
-  }
 
-  .vip-icon-wrap {
-    width: 68rpx;
-    height: 68rpx;
-    border-radius: 34rpx;
-    background: rgba(255, 255, 255, 0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    .vip-icon-wrap {
+      width: 68rpx;
+      height: 68rpx;
+      border-radius: 34rpx;
+      background: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 20rpx;
+    }
   }
 
   .vip-status-title {
@@ -316,10 +316,13 @@ const formatTime = (ts: number) => {
 }
 
 .section {
+  box-sizing: border-box;
   background: #ffffff;
-  border-radius: 20rpx;
-  padding: 30rpx;
-  margin-bottom: 24rpx;
+  border-radius: 24rpx;
+  padding: 32rpx;
+  margin-bottom: 28rpx;
+  border: 1px solid rgba(228, 233, 242, 0.85);
+  box-shadow: 0 10rpx 28rpx rgba(22, 45, 90, 0.06);
 
   .section-head {
     display: flex;
@@ -348,7 +351,6 @@ const formatTime = (ts: number) => {
 .goods-grid {
   display: flex;
   flex-direction: column;
-  gap: 20rpx;
 }
 
 .goods-card {
@@ -356,7 +358,12 @@ const formatTime = (ts: number) => {
   border: 3rpx solid #edf0f5;
   border-radius: 18rpx;
   padding: 28rpx;
+  margin-bottom: 20rpx;
   transition: all 0.2s ease;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 
   &.is-active {
     border-color: #4d80f0;
@@ -417,32 +424,41 @@ const formatTime = (ts: number) => {
 
 .notice-card {
   background: #f0fdf4;
-  border: 1rpx solid #bbf7d0;
+  border: 1px solid #bbf7d0;
   border-radius: 16rpx;
   padding: 20rpx 28rpx;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 24rpx;
+  margin-bottom: 28rpx;
 
   .notice-item {
     display: flex;
     align-items: center;
-    gap: 8rpx;
     font-size: 22rpx;
     color: #166534;
+
+    text {
+      margin-left: 8rpx;
+    }
   }
 }
 
 .order-list {
   display: flex;
   flex-direction: column;
-  gap: 18rpx;
 }
 
 .order-item {
+  box-sizing: border-box;
   background: #fafbfc;
-  border-radius: 14rpx;
-  padding: 20rpx;
+  border-radius: 16rpx;
+  padding: 22rpx;
+  margin-bottom: 18rpx;
+  border: 1px solid #edf0f5;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 
   .order-head {
     display: flex;
@@ -487,7 +503,7 @@ const formatTime = (ts: number) => {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-top: 1rpx dashed #e8eaef;
+    border-top: 1px dashed #e8eaef;
     padding-top: 14rpx;
 
     .order-amount {

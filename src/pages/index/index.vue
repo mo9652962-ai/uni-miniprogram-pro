@@ -216,49 +216,54 @@ const formatTime = (ts: number) => {
 
 <style lang="scss" scoped>
 .container {
-  padding: 24rpx;
-  display: flex;
-  flex-direction: column;
-  gap: 32rpx;
+  box-sizing: border-box;
+  padding: 28rpx 26rpx 60rpx;
 }
 
 .hero-card {
-  background: linear-gradient(135deg, #4d80f0 0%, #2955c8 100%);
-  border-radius: 24rpx;
-  padding: 36rpx 32rpx 32rpx;
+  box-sizing: border-box;
+  margin-bottom: 42rpx;
+  background: linear-gradient(135deg, #3d73ee 0%, #204ecf 100%);
+  border-radius: 28rpx;
+  padding: 40rpx 32rpx 36rpx;
   color: #fff;
-  box-shadow: 0 12rpx 32rpx rgba(77, 128, 240, 0.28);
+  box-shadow: 0 16rpx 40rpx rgba(32, 78, 207, 0.35), 0 4rpx 12rpx rgba(32, 78, 207, 0.15);
 
   .hero-top {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: 36rpx;
+    margin-bottom: 40rpx;
 
     .hero-left {
       display: flex;
       flex-direction: column;
-      gap: 8rpx;
 
       .hero-greeting {
-        font-size: 40rpx;
-        font-weight: bold;
+        font-size: 42rpx;
+        font-weight: 800;
+        margin-bottom: 10rpx;
+        letter-spacing: 0.5rpx;
       }
 
       .hero-date {
-        font-size: 22rpx;
-        opacity: 0.82;
+        font-size: 24rpx;
+        opacity: 0.85;
       }
     }
 
     .hero-badge {
       display: flex;
       align-items: center;
-      gap: 8rpx;
-      padding: 10rpx 20rpx;
-      border-radius: 30rpx;
-      background: rgba(255, 255, 255, 0.18);
-      font-size: 22rpx;
+      padding: 12rpx 22rpx;
+      border-radius: 32rpx;
+      background: rgba(255, 255, 255, 0.2);
+      font-size: 24rpx;
+      font-weight: 500;
+
+      text {
+        margin-left: 10rpx;
+      }
     }
   }
 
@@ -266,57 +271,66 @@ const formatTime = (ts: number) => {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    background: rgba(255, 255, 255, 0.14);
-    border-radius: 16rpx;
-    padding: 24rpx 0;
+    background: rgba(255, 255, 255, 0.16);
+    border-radius: 20rpx;
+    padding: 26rpx 0;
 
     .stat-item {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 6rpx;
       flex: 1;
 
       .stat-num {
-        font-size: 44rpx;
-        font-weight: bold;
+        font-size: 48rpx;
+        font-weight: 800;
         line-height: 1;
+        margin-bottom: 8rpx;
 
         .stat-unit {
-          font-size: 24rpx;
+          font-size: 26rpx;
+          font-weight: 600;
         }
       }
 
       .stat-label {
-        font-size: 22rpx;
-        opacity: 0.85;
+        font-size: 24rpx;
+        opacity: 0.88;
       }
     }
 
     .stat-divider {
       width: 2rpx;
-      height: 48rpx;
-      background: rgba(255, 255, 255, 0.24);
+      height: 52rpx;
+      background: rgba(255, 255, 255, 0.28);
     }
   }
 }
 
 .section {
+  margin-bottom: 44rpx;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
   .section-head {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20rpx;
+    margin-bottom: 24rpx;
 
     .section-title {
-      font-size: 32rpx;
-      font-weight: 600;
+      font-size: 34rpx;
+      font-weight: 700;
       color: #1a1a1a;
+      letter-spacing: 0.5rpx;
     }
 
     .section-more {
-      font-size: 24rpx;
+      font-size: 26rpx;
       color: #4d80f0;
+      font-weight: 500;
     }
   }
 }
@@ -324,39 +338,48 @@ const formatTime = (ts: number) => {
 .quick-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 20rpx;
+  justify-content: space-between;
 
   .quick-item {
-    width: calc(50% - 10rpx);
+    box-sizing: border-box;
+    width: calc(50% - 14rpx);
+    min-height: 236rpx;
+    margin-bottom: 28rpx;
     background: #ffffff;
-    border-radius: 18rpx;
-    padding: 28rpx 24rpx;
+    border-radius: 24rpx;
+    padding: 36rpx 28rpx 32rpx;
     display: flex;
     flex-direction: column;
-    gap: 10rpx;
-    box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.04);
+    justify-content: flex-start;
+    border: 1px solid rgba(228, 233, 242, 0.8);
+    box-shadow: 0 10rpx 26rpx rgba(22, 45, 90, 0.08), 0 2rpx 6rpx rgba(22, 45, 90, 0.03);
 
     .quick-title {
-      font-size: 28rpx;
-      font-weight: 600;
+      margin-top: 18rpx;
+      margin-bottom: 8rpx;
+      font-size: 30rpx;
+      font-weight: 700;
       color: #1a1a1a;
+      line-height: 1.25;
     }
 
     .quick-sub {
-      font-size: 22rpx;
-      color: #8c8c8c;
+      font-size: 23rpx;
+      color: #8c93a0;
+      line-height: 1.35;
     }
 
     &.quick-primary {
-      background: linear-gradient(135deg, #ff9500 0%, #ff6b00 100%);
-      box-shadow: 0 8rpx 24rpx rgba(255, 149, 0, 0.3);
+      background: linear-gradient(135deg, #ff9800 0%, #ff5722 100%);
+      border: 1px solid rgba(255, 120, 0, 0.35);
+      box-shadow: 0 14rpx 36rpx rgba(255, 87, 34, 0.38), 0 4rpx 12rpx rgba(255, 87, 34, 0.18);
 
       .quick-title {
         color: #fff;
       }
 
       .quick-sub {
-        color: rgba(255, 255, 255, 0.85);
+        color: rgba(255, 255, 255, 0.9);
       }
     }
   }
@@ -364,30 +387,34 @@ const formatTime = (ts: number) => {
 
 .empty-box {
   background: #ffffff;
-  border-radius: 18rpx;
-  padding: 60rpx 0;
+  border-radius: 24rpx;
+  padding: 70rpx 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16rpx;
+  border: 1px solid rgba(228, 233, 242, 0.8);
+  box-shadow: 0 10rpx 26rpx rgba(22, 45, 90, 0.05);
 
   .empty-text {
-    font-size: 24rpx;
-    color: #a0a0a0;
+    margin-top: 18rpx;
+    font-size: 26rpx;
+    color: #9aa1af;
   }
 }
 
 .record-list {
   background: #ffffff;
-  border-radius: 18rpx;
+  border-radius: 24rpx;
   overflow: hidden;
+  border: 1px solid rgba(228, 233, 242, 0.8);
+  box-shadow: 0 10rpx 26rpx rgba(22, 45, 90, 0.06);
 }
 
 .record-item {
   display: flex;
   align-items: center;
   padding: 26rpx 24rpx;
-  border-bottom: 1rpx solid #f2f3f5;
+  border-bottom: 1px solid #f2f3f5;
 
   &:last-child {
     border-bottom: none;
@@ -428,12 +455,12 @@ const formatTime = (ts: number) => {
     margin-left: 24rpx;
     display: flex;
     flex-direction: column;
-    gap: 6rpx;
 
     .record-tag {
       font-size: 26rpx;
       color: #333;
       font-weight: 500;
+      margin-bottom: 6rpx;
     }
 
     .record-time {
